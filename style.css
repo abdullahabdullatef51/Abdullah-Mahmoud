@@ -825,7 +825,7 @@ textarea.form-control {
 }
 
 .footer-tagline {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     color: rgba(255, 255, 255, 0.5);
     font-size: 1.1rem;
 }
