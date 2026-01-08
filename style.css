@@ -34,18 +34,48 @@ header {
     display: flex;
     gap: 2.5rem;
 }
+.hover-underline {
+  font-size: 2rem;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline::after,
+.hover-underline::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #ff0000, #00ffff);
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.hover-underline::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+  transform: scaleX(1);
+}
 
 .navbar a {
-    font-size: 1rem;
+    font-size:18px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
-    transition: 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    transition: 0.3s ease;
+   
 }
 
 .navbar a:hover {
-    color: #7ce9e6;
+    color: #405756;
+    letter-spacing: 2px;
 }
 
 
@@ -55,24 +85,91 @@ header {
     letter-spacing: 2px;
 }
 
+
+
+.glow-on-hover {
+    width: 200px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    /* background: #111; */
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(124, 233, 230, 0.5);
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #522f2f, #776353, #dad9ac, #121a0e, #00ffd5, #002bff, #3b383f, #7c898a, #6b4040);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background: #111; */
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+
+
 .content-btn {
-    display: inline-flex;
+    /* display: inline-flex; */
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 2rem;
-    font-size: 1rem;
+    padding: 0.7rem 0.4rem;
+    font-size: 20px;
+    text-align: center;
     background-color: rgb(143, 143, 143, 0.2);
     border: 1px solid rgba(102, 102, 102, 0.5);
-    border-radius: 50px;
     cursor: pointer;
-    color: white;
     transition: 0.3s;
     text-decoration: none;
+    /* margin-left: 50px; */
 }
 
 .content-btn:hover {
-    background-color: #76b0ab37;
     transform: scale(1.1);
+    letter-spacing: 4px;
 }
 
 .header-btns {
@@ -214,7 +311,7 @@ main h1 {
     font-weight: 1000;
     letter-spacing: 5px;
     line-height: 1;
-    background-image: linear-gradient(rgb(104, 98, 98),
+    background-image: linear-gradient(rgb(85, 75, 75),
             rgb(255, 242, 242));
     color: transparent;
     background-clip: text;
@@ -312,13 +409,6 @@ main h1 {
 }
 
 
-.planet-3D {
-    position: absolute;
-    top: -20%;
-    right: -14%;
-    width: 130%;
-    height: 130%;
-}
 
 /* about  section */
 
@@ -785,10 +875,10 @@ main h1 {
     width: 100%;
     padding: 16px 20px;
     background-color: #2d2d2d;
-    border-radius: 10px;
+    border-radius: 20px;
     color: lightgray;
     font-size: 20px;
-    transition: border-color 0.3s;
+    transition:  0.3s ease;
     border: 1px solid #333;
 
 }
@@ -796,6 +886,11 @@ main h1 {
 .form-control:focus {
     outline: none;
     color: #7ce9e6;
+    background-color: #bac2ee;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(124, 233, 230, 0.5);
+    letter-spacing: 3px;
+    border-radius: 30px;
 }
 
 textarea.form-control {
@@ -901,6 +996,9 @@ textarea.form-control {
         opacity: 1;
     }
 }
+
+
+
 
 /* .footer {
     width: 100%;
